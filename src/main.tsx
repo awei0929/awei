@@ -1,7 +1,7 @@
 import { StrictMode, Suspense, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'mobx-react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { useStores } from './store';
 import Layout from './layout';
 import './index.css';
@@ -9,14 +9,17 @@ import { getFlattenRoutes } from './helpers/ formatRouter';
 import { defaultRouter, layoutRouter } from './router';
 
 function Main() {
-  const flattenRoutes = useMemo(() => getFlattenRoutes(layoutRouter,'layout') || [], []);
+  const flattenRoutes = useMemo(
+    () => getFlattenRoutes(layoutRouter, 'layout') || [],
+    []
+  );
 
   return (
     <StrictMode>
       <Provider store={useStores}>
-        <BrowserRouter>
-          {/* </HashRouter> */}
-          {/* <HashRouter> */}
+        <HashRouter>
+          {/* </BrowserRouter> */}
+          {/* <BrowserRouter> */}
           <Routes>
             <Route path="/layout" element={<Layout />}>
               {flattenRoutes.map(route => {
@@ -36,6 +39,11 @@ function Main() {
                 path="/layout"
                 element={<Navigate to={`/layout/${defaultRouter}`} />}
               />
+
+              <Route
+                path="*"
+                element={<Navigate to={`/layout/${defaultRouter}`} />}
+              />
             </Route>
 
             {/* <Route path="/cc" element={<div>222</div>}>
@@ -48,7 +56,7 @@ function Main() {
               
             </Route> */}
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     </StrictMode>
   );
