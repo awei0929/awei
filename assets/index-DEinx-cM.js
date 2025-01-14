@@ -12403,16 +12403,19 @@ var Action;
   Action2["Replace"] = "REPLACE";
 })(Action || (Action = {}));
 const PopStateEventType = "popstate";
-function createBrowserHistory(options) {
+function createHashHistory(options) {
   if (options === void 0) {
     options = {};
   }
-  function createBrowserLocation(window2, globalHistory) {
+  function createHashLocation(window2, globalHistory) {
     let {
-      pathname,
-      search,
-      hash
-    } = window2.location;
+      pathname = "/",
+      search = "",
+      hash = ""
+    } = parsePath(window2.location.hash.substr(1));
+    if (!pathname.startsWith("/") && !pathname.startsWith(".")) {
+      pathname = "/" + pathname;
+    }
     return createLocation(
       "",
       {
@@ -12425,10 +12428,20 @@ function createBrowserHistory(options) {
       globalHistory.state && globalHistory.state.key || "default"
     );
   }
-  function createBrowserHref(window2, to) {
-    return typeof to === "string" ? to : createPath(to);
+  function createHashHref(window2, to) {
+    let base = window2.document.querySelector("base");
+    let href = "";
+    if (base && base.getAttribute("href")) {
+      let url = window2.location.href;
+      let hashIndex = url.indexOf("#");
+      href = hashIndex === -1 ? url : url.slice(0, hashIndex);
+    }
+    return href + "#" + (typeof to === "string" ? to : createPath(to));
   }
-  return getUrlBasedHistory(createBrowserLocation, createBrowserHref, null, options);
+  function validateHashLocation(location, to) {
+    warning$1(location.pathname.charAt(0) === "/", "relative pathnames are not supported in hash history.push(" + JSON.stringify(to) + ")");
+  }
+  return getUrlBasedHistory(createHashLocation, createHashHref, validateHashLocation, options);
 }
 function invariant(value, message) {
   if (value === false || value === null || typeof value === "undefined") {
@@ -12541,6 +12554,7 @@ function getUrlBasedHistory(getLocation, createHref, validateLocation, options) 
   function push2(to, state) {
     action2 = Action.Push;
     let location = createLocation(history.location, to, state);
+    validateLocation(location, to);
     index2 = getIndex() + 1;
     let historyState = getHistoryState(location, index2);
     let url = history.createHref(location);
@@ -12563,6 +12577,7 @@ function getUrlBasedHistory(getLocation, createHref, validateLocation, options) 
   function replace2(to, state) {
     action2 = Action.Replace;
     let location = createLocation(history.location, to, state);
+    validateLocation(location, to);
     index2 = getIndex();
     let historyState = getHistoryState(location, index2);
     let url = history.createHref(location);
@@ -13559,16 +13574,16 @@ try {
 }
 const START_TRANSITION = "startTransition";
 const startTransitionImpl = React$1[START_TRANSITION];
-function BrowserRouter(_ref4) {
+function HashRouter(_ref5) {
   let {
     basename,
     children,
     future,
     window: window2
-  } = _ref4;
+  } = _ref5;
   let historyRef = reactExports.useRef();
   if (historyRef.current == null) {
-    historyRef.current = createBrowserHistory({
+    historyRef.current = createHashHistory({
       window: window2,
       v5Compat: true
     });
@@ -18220,7 +18235,7 @@ function MyLayout() {
 }
 const scriptRel = "modulepreload";
 const assetsURL = function(dep) {
-  return "/layout/" + dep;
+  return "/" + dep;
 };
 const seen = {};
 const __vitePreload = function preload(baseModule, deps, importerUrl) {
@@ -18289,7 +18304,7 @@ function getFlattenRoutes(routes, father) {
   function travel(_routes) {
     _routes.forEach((route) => {
       if (route.componentPath) {
-        route.component = reactExports.lazy(() => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../pages/layout/OnePage/index.tsx": () => __vitePreload(() => import("./index-C53EZ8bs.js"), true ? [] : void 0), "../pages/layout/Welcome/index.tsx": () => __vitePreload(() => import("./index-FQc885Np.js"), true ? [] : void 0) }), `../pages/${father}/${route.componentPath}/index.tsx`, 5));
+        route.component = reactExports.lazy(() => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../pages/layout/OnePage/index.tsx": () => __vitePreload(() => import("./index-D-oFF0wt.js"), true ? [] : void 0), "../pages/layout/Welcome/index.tsx": () => __vitePreload(() => import("./index-Bq7A7bW2.js"), true ? [] : void 0) }), `../pages/${father}/${route.componentPath}/index.tsx`, 5));
         res.push(route);
       }
     });
@@ -18302,7 +18317,7 @@ function Main() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, {
     children: /* @__PURE__ */ jsxRuntimeExports.jsx(Provider, {
       store: useStores,
-      children: /* @__PURE__ */ jsxRuntimeExports.jsx(BrowserRouter, {
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(HashRouter, {
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(Routes, {
           children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Route, {
             path: "/layout",
@@ -18319,6 +18334,11 @@ function Main() {
               }, `/layout/${route.key}`);
             }), /* @__PURE__ */ jsxRuntimeExports.jsx(Route, {
               path: "/layout",
+              element: /* @__PURE__ */ jsxRuntimeExports.jsx(Navigate, {
+                to: `/layout/${defaultRouter}`
+              })
+            }), /* @__PURE__ */ jsxRuntimeExports.jsx(Route, {
+              path: "*",
               element: /* @__PURE__ */ jsxRuntimeExports.jsx(Navigate, {
                 to: `/layout/${defaultRouter}`
               })

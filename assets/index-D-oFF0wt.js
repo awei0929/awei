@@ -1,4 +1,4 @@
-import { o as observer, u as useStores, r as reactExports, j as jsxRuntimeExports } from "./index-Z5l1I7Mm.js";
+import { o as observer, u as useStores, r as reactExports, j as jsxRuntimeExports } from "./index-DEinx-cM.js";
 function OnePage() {
   const store = useStores();
   reactExports.useEffect(() => {
