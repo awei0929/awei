@@ -18235,7 +18235,7 @@ function MyLayout() {
 }
 const scriptRel = "modulepreload";
 const assetsURL = function(dep) {
-  return "/" + dep;
+  return "/awei/" + dep;
 };
 const seen = {};
 const __vitePreload = function preload(baseModule, deps, importerUrl) {
@@ -18304,7 +18304,7 @@ function getFlattenRoutes(routes, father) {
   function travel(_routes) {
     _routes.forEach((route) => {
       if (route.componentPath) {
-        route.component = reactExports.lazy(() => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../pages/layout/OnePage/index.tsx": () => __vitePreload(() => import("./index-D-oFF0wt.js"), true ? [] : void 0), "../pages/layout/Welcome/index.tsx": () => __vitePreload(() => import("./index-Bq7A7bW2.js"), true ? [] : void 0) }), `../pages/${father}/${route.componentPath}/index.tsx`, 5));
+        route.component = reactExports.lazy(() => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../pages/layout/OnePage/index.tsx": () => __vitePreload(() => import("./index-Elr7jxH9.js"), true ? [] : void 0), "../pages/layout/Welcome/index.tsx": () => __vitePreload(() => import("./index-BoxFwjMg.js"), true ? [] : void 0) }), `../pages/${father}/${route.componentPath}/index.tsx`, 5));
         res.push(route);
       }
     });
