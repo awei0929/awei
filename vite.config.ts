@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
   ];
 
   return {
-    // base: '/layout',
+    base: '/awei',
     resolve: {
       alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }],
     },
