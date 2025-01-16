@@ -30,7 +30,7 @@ export interface RouteType {
 
 export const defaultRouter = 'welcome'
 
-export const layoutRouter: RouteType[]   = [
+export const layoutRouter: RouteType[] = [
   {
     name: '欢迎页',
     key: 'welcome',
@@ -38,8 +38,8 @@ export const layoutRouter: RouteType[]   = [
     hidden: true,
   },
   {
-    name: '第一页',
-    key: 'one-page',
+    name: '工作流',
+    key: 'react-flow',
     componentPath: 'OnePage',
   },
 ];

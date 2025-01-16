@@ -1,6 +1,7 @@
 import { useStores } from '@/store';
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
+import ReactFlow from './ReactFlow';
 
 function OnePage() {
   const store = useStores();
@@ -9,9 +10,11 @@ function OnePage() {
     store.app.initAppointAll();
   }, []);
 
-  return <div>OnePage</div>;
+  return (
+    <div style={{ width: '100%', height: '100%' }}>
+      <ReactFlow />
+    </div>
+  );
 }
 
-const ObservedOnePage = observer(OnePage);
-
-export default ObservedOnePage;
+export default observer(OnePage);
