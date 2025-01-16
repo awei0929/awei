@@ -7,6 +7,7 @@ import Layout from './layout';
 import './index.css';
 import { getFlattenRoutes } from './helpers/ formatRouter';
 import { defaultRouter, layoutRouter } from './router';
+import HomeLayout from './homeLayout';
 
 function Main() {
   const flattenRoutes = useMemo(
@@ -45,16 +46,12 @@ function Main() {
                 element={<Navigate to={`/layout/${defaultRouter}`} />}
               />
             </Route>
-
-            {/* <Route path="/cc" element={<div>222</div>}>
-              
-              </Route>
-              <Route path="/bb" element={<div>222</div>}>
-              
-              </Route>
-            <Route path="*" element={<Layout />}>
-              
-            </Route> */}
+            <Route path="/home-layout" element={<HomeLayout />}>
+              {/* <Route
+                path="*"
+                element={<Navigate to={`/home-layout/${defaultRouter}`} />}
+              /> */}
+            </Route>
           </Routes>
         </HashRouter>
       </Provider>

@@ -13,7 +13,12 @@ function MyLayout() {
   const navigate = useNavigate();
   return (
     <Layout className={Style['layout']}>
-      <Header className={Style['layout-header']}>Header</Header>
+      <Header
+        className={Style['layout-header']}
+        onClick={() => navigate('/home-layout')}
+      >
+        Header
+      </Header>
       <Layout className={Style['layout-main']}>
         <Sider className={Style['layout-main-sider']}>
           {layoutRouter.map(item => {

@@ -1,0 +1,53 @@
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.home-time {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -10%;
+  left: 0;
+  color: #fff;
+  font-size: 64px;
+  text-align: center;
+  z-index: 1;
+  font-family: 'MyTTSFont';
+  text-shadow: 1px 4px 5px;
+}
+
+.home-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  &-item {
+    padding: 16px;
+    font-size: 16px;
+    margin: 0 10px;
+    border-radius: 4px;
+    backdrop-filter: blur(10px) brightness(90%);
+    background-color: rgba(255, 255, 255, 0.603);
+    border-radius: 10px;
+    opacity: 0.5;
+    cursor: pointer;
+    color: #ffffff;
+    &:hover {
+      opacity: 1;
+      transition: 0.2s;
+      box-shadow: 1px 2px 7px 0px #cfcfcf;
+    }
+  }
+}

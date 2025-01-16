@@ -92,3 +92,10 @@ video {
   vertical-align: baseline;
   border: 0;
 }
+
+@font-face {
+  font-family: 'MyTTSFont';
+  src: url('./assets/SilkRoad.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

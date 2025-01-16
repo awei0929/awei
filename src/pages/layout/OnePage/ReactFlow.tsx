@@ -79,14 +79,16 @@ const initialEdges = [
 ];
 
 function EdgeTypesFlow() {
+  // 节点
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // 线
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  // 新增线
   const onConnect = useCallback(
     (params: Connection) =>
       setEdges(eds => {
         console.log(params, 'params');
-
         return addEdge({ ...params, label: '999' }, eds);
       }),
     []
