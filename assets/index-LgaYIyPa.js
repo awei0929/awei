@@ -1,3 +1,4 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/index-B7qB84bA.js","assets/index-CRrYApcg.css"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
@@ -466,10 +467,10 @@ function requireJsxRuntime() {
 }
 var jsxRuntimeExports = requireJsxRuntime();
 var reactExports = requireReact();
-const React = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
-const React$1 = /* @__PURE__ */ _mergeNamespaces({
+const ReactExports = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
+const React = /* @__PURE__ */ _mergeNamespaces({
   __proto__: null,
-  default: React
+  default: ReactExports
 }, [reactExports]);
 var client = {};
 var reactDom = { exports: {} };
@@ -11990,7 +11991,7 @@ function useObserver(render, baseComponentName) {
   if (baseComponentName === void 0) {
     baseComponentName = "observed";
   }
-  var admRef = React.useRef(null);
+  var admRef = ReactExports.useRef(null);
   if (!admRef.current) {
     var adm_1 = {
       reaction: null,
@@ -12022,7 +12023,7 @@ function useObserver(render, baseComponentName) {
     createReaction$1(adm);
     observerFinalizationRegistry.register(admRef, adm, adm);
   }
-  React.useDebugValue(adm.reaction, printDebugValue);
+  ReactExports.useDebugValue(adm.reaction, printDebugValue);
   shimExports.useSyncExternalStore(
     // Both of these must be stable, otherwise it would keep resubscribing every render.
     adm.subscribe,
@@ -12354,18 +12355,18 @@ function _objectWithoutPropertiesLoose(r, e) {
   return t;
 }
 var _excluded = ["children"];
-var MobXProviderContext = /* @__PURE__ */ React.createContext({});
+var MobXProviderContext = /* @__PURE__ */ ReactExports.createContext({});
 function Provider(props) {
   var children = props.children, stores = _objectWithoutPropertiesLoose(props, _excluded);
-  var parentValue = React.useContext(MobXProviderContext);
-  var mutableProviderRef = React.useRef(_extends$3({}, parentValue, stores));
+  var parentValue = ReactExports.useContext(MobXProviderContext);
+  var mutableProviderRef = ReactExports.useRef(_extends$3({}, parentValue, stores));
   var value = mutableProviderRef.current;
-  return React.createElement(MobXProviderContext.Provider, {
+  return ReactExports.createElement(MobXProviderContext.Provider, {
     value
   }, children);
 }
 Provider.displayName = "MobXProvider";
-/* @__PURE__ */ Number.parseInt(React.version.split(".")[0]);
+/* @__PURE__ */ Number.parseInt(ReactExports.version.split(".")[0]);
 if (!reactExports.Component) {
   throw new Error("mobx-react requires React to be available");
 }
@@ -13573,7 +13574,7 @@ try {
 } catch (e) {
 }
 const START_TRANSITION = "startTransition";
-const startTransitionImpl = React$1[START_TRANSITION];
+const startTransitionImpl = React[START_TRANSITION];
 function HashRouter(_ref5) {
   let {
     basename,
@@ -14619,16 +14620,16 @@ function IconEmptyComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     d: "M24 5v6m7 1 4-4m-18 4-4-4m28.5 22H28s-1 3-4 3-4-3-4-3H6.5M40 41H8a2 2 0 0 1-2-2v-8.46a2 2 0 0 1 .272-1.007l6.15-10.54A2 2 0 0 1 14.148 18H33.85a2 2 0 0 1 1.728.992l6.149 10.541A2 2 0 0 1 42 30.541V39a2 2 0 0 1-2 2Z"
   }));
 }
-var IconEmpty = /* @__PURE__ */ React.forwardRef(IconEmptyComponent);
+var IconEmpty = /* @__PURE__ */ ReactExports.forwardRef(IconEmptyComponent);
 IconEmpty.defaultProps = {
   isIcon: true
 };
@@ -14704,18 +14705,18 @@ function Empty(baseProps, ref) {
   var classNames = cs$1(prefixCls, className);
   var noData = globalLocale.Empty.noData;
   var alt = typeof description === "string" ? description : "empty";
-  return React.createElement("div", __assign$b({
+  return ReactExports.createElement("div", __assign$b({
     ref,
     className: classNames,
     style
-  }, rest), React.createElement("div", {
+  }, rest), ReactExports.createElement("div", {
     className: prefixCls + "-wrapper"
-  }, React.createElement("div", {
+  }, ReactExports.createElement("div", {
     className: prefixCls + "-image"
-  }, imgSrc ? React.createElement("img", {
+  }, imgSrc ? ReactExports.createElement("img", {
     alt,
     src: imgSrc
-  }) : icon || React.createElement(IconEmpty, null)), React.createElement("div", {
+  }) : icon || ReactExports.createElement(IconEmpty, null)), ReactExports.createElement("div", {
     className: prefixCls + "-description"
   }, description || noData)));
 }
@@ -14735,7 +14736,7 @@ var __assign$a = function() {
 function renderEmpty(componentName) {
   switch (componentName) {
     default:
-      return React.createElement(Empty$1, null);
+      return ReactExports.createElement(Empty$1, null);
   }
 }
 var DefaultConfigProviderProps = {
@@ -15672,7 +15673,7 @@ var ResizeObserverComponent = (
       return _this;
     }
     ResizeObserverComponent2.prototype.componentDidMount = function() {
-      if (!React.isValidElement(this.props.children)) {
+      if (!ReactExports.isValidElement(this.props.children)) {
         console.warn("The children of ResizeObserver is invalid.");
       } else {
         this.createResizeObserver();
@@ -15698,7 +15699,7 @@ var ResizeObserverComponent = (
       return this.props.children;
     };
     return ResizeObserverComponent2;
-  }(React.Component)
+  }(ReactExports.Component)
 );
 var useIsomorphicLayoutEffect = isServerRendering ? reactExports.useEffect : reactExports.useLayoutEffect;
 function usePrevious(value) {
@@ -16479,16 +16480,16 @@ function IconRightComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     d: "m16 39.513 15.556-15.557L16 8.4"
   }));
 }
-var IconRight = /* @__PURE__ */ React.forwardRef(IconRightComponent);
+var IconRight = /* @__PURE__ */ ReactExports.forwardRef(IconRightComponent);
 IconRight.defaultProps = {
   isIcon: true
 };
@@ -16538,16 +16539,16 @@ function IconLeftComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     d: "M32 8.4 16.444 23.956 32 39.513"
   }));
 }
-var IconLeft = /* @__PURE__ */ React.forwardRef(IconLeftComponent);
+var IconLeft = /* @__PURE__ */ ReactExports.forwardRef(IconLeftComponent);
 IconLeft.defaultProps = {
   isIcon: true
 };
@@ -16597,20 +16598,20 @@ function IconDragDotVerticalComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     fill: "currentColor",
     stroke: "none",
     d: "M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ ReactExports.createElement("path", {
     d: "M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z"
   }));
 }
-var IconDragDotVertical = /* @__PURE__ */ React.forwardRef(IconDragDotVerticalComponent);
+var IconDragDotVertical = /* @__PURE__ */ ReactExports.forwardRef(IconDragDotVerticalComponent);
 IconDragDotVertical.defaultProps = {
   isIcon: true
 };
@@ -16660,20 +16661,20 @@ function IconDragDotComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     fill: "currentColor",
     stroke: "none",
     d: "M40 17v2h-2v-2h2ZM25 17v2h-2v-2h2ZM10 17v2H8v-2h2ZM40 29v2h-2v-2h2ZM25 29v2h-2v-2h2ZM10 29v2H8v-2h2Z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ ReactExports.createElement("path", {
     d: "M40 17v2h-2v-2h2ZM25 17v2h-2v-2h2ZM10 17v2H8v-2h2ZM40 29v2h-2v-2h2ZM25 29v2h-2v-2h2ZM10 29v2H8v-2h2Z"
   }));
 }
-var IconDragDot = /* @__PURE__ */ React.forwardRef(IconDragDotComponent);
+var IconDragDot = /* @__PURE__ */ ReactExports.forwardRef(IconDragDotComponent);
 IconDragDot.defaultProps = {
   isIcon: true
 };
@@ -16723,18 +16724,18 @@ function IconCaretRightComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     fill: "currentColor",
     stroke: "none",
     d: "M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z"
   }));
 }
-var IconCaretRight = /* @__PURE__ */ React.forwardRef(IconCaretRightComponent);
+var IconCaretRight = /* @__PURE__ */ ReactExports.forwardRef(IconCaretRightComponent);
 IconCaretRight.defaultProps = {
   isIcon: true
 };
@@ -16784,18 +16785,18 @@ function IconCaretLeftComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     fill: "currentColor",
     stroke: "none",
     d: "M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937L13.171 24.937Z"
   }));
 }
-var IconCaretLeft = /* @__PURE__ */ React.forwardRef(IconCaretLeftComponent);
+var IconCaretLeft = /* @__PURE__ */ ReactExports.forwardRef(IconCaretLeftComponent);
 IconCaretLeft.defaultProps = {
   isIcon: true
 };
@@ -16845,18 +16846,18 @@ function IconCaretDownComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     fill: "currentColor",
     stroke: "none",
     d: "M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z"
   }));
 }
-var IconCaretDown = /* @__PURE__ */ React.forwardRef(IconCaretDownComponent);
+var IconCaretDown = /* @__PURE__ */ ReactExports.forwardRef(IconCaretDownComponent);
 IconCaretDown.defaultProps = {
   isIcon: true
 };
@@ -16906,18 +16907,18 @@ function IconCaretUpComponent(iconProps, ref) {
   }
   delete props.spin;
   delete props.isIcon;
-  return /* @__PURE__ */ React.createElement("svg", _extends({
+  return /* @__PURE__ */ ReactExports.createElement("svg", _extends({
     fill: "none",
     stroke: "currentColor",
     strokeWidth: "4",
     viewBox: "0 0 48 48"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ ReactExports.createElement("path", {
     fill: "currentColor",
     stroke: "none",
     d: "M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z"
   }));
 }
-var IconCaretUp = /* @__PURE__ */ React.forwardRef(IconCaretUpComponent);
+var IconCaretUp = /* @__PURE__ */ ReactExports.forwardRef(IconCaretUpComponent);
 IconCaretUp.defaultProps = {
   isIcon: true
 };
@@ -16949,50 +16950,50 @@ function ResizeTrigger(props) {
   var rtlReverse = rtl && !isHorizontal;
   var classNames = cs$1(prefixCls, prefixCls + "-" + (isHorizontal ? "horizontal" : "vertical"), (_a2 = {}, _a2[prefixCls + "-not-resizable"] = !resizable, _a2), (_b2 = {}, _b2[prefixCls + "-rtl"] = rtl, _b2), className);
   var refDiv = reactExports.useRef();
-  var verticalTriggerIcon = rtlReverse ? [React.createElement(IconCaretRight, {
+  var verticalTriggerIcon = rtlReverse ? [ReactExports.createElement(IconCaretRight, {
     key: "prev"
-  }), React.createElement(IconCaretLeft, {
+  }), ReactExports.createElement(IconCaretLeft, {
     key: "next"
-  })] : [React.createElement(IconCaretLeft, {
+  })] : [ReactExports.createElement(IconCaretLeft, {
     key: "prev"
-  }), React.createElement(IconCaretRight, {
+  }), ReactExports.createElement(IconCaretRight, {
     key: "next"
   })];
   var prevCollapsedConfig = isObject(collapsible.prev) ? __assign$8(__assign$8({}, collapsible.prev), {
-    icon: collapsible.prev.icon || (isHorizontal ? React.createElement(IconCaretUp, null) : verticalTriggerIcon[0])
+    icon: collapsible.prev.icon || (isHorizontal ? ReactExports.createElement(IconCaretUp, null) : verticalTriggerIcon[0])
   }) : {};
   var nextCollapsedConfig = isObject(collapsible.next) ? __assign$8(__assign$8({}, collapsible.next), {
-    icon: collapsible.next.icon || (isHorizontal ? React.createElement(IconCaretDown, null) : verticalTriggerIcon[1])
+    icon: collapsible.next.icon || (isHorizontal ? ReactExports.createElement(IconCaretDown, null) : verticalTriggerIcon[1])
   }) : {};
   var renderPrevCollapsedTrigger = function() {
     if (prevCollapsedConfig.icon && !prevCollapsedConfig.collapsed || nextCollapsedConfig.collapsed) {
-      return React.createElement("span", {
+      return ReactExports.createElement("span", {
         className: cs$1(prefixCls + "-icon", cs$1(prefixCls + "-prev")),
         onClick: prevCollapsedConfig.onClick
       }, prevCollapsedConfig.icon);
     }
-    return React.createElement("span", {
+    return ReactExports.createElement("span", {
       className: cs$1(prefixCls + "-icon-empty")
     });
   };
   var renderNextCollapsedTrigger = function() {
     if (nextCollapsedConfig.icon && !nextCollapsedConfig.collapsed || prevCollapsedConfig.collapsed) {
-      return React.createElement("span", {
+      return ReactExports.createElement("span", {
         className: cs$1(prefixCls + "-icon", cs$1(prefixCls + "-next")),
         onClick: nextCollapsedConfig.onClick
       }, nextCollapsedConfig.icon);
     }
-    return React.createElement("span", {
+    return ReactExports.createElement("span", {
       className: cs$1(prefixCls + "-icon-empty")
     });
   };
   var renderResizeTrigger = function() {
     if (resizable) {
-      return React.createElement("span", {
+      return ReactExports.createElement("span", {
         className: prefixCls + "-icon"
-      }, icon || (isHorizontal ? React.createElement(IconDragDot, null) : React.createElement(IconDragDotVertical, null)));
+      }, icon || (isHorizontal ? ReactExports.createElement(IconDragDot, null) : ReactExports.createElement(IconDragDotVertical, null)));
     }
-    return React.createElement("span", {
+    return ReactExports.createElement("span", {
       className: cs$1(prefixCls + "-icon-empty")
     });
   };
@@ -17000,21 +17001,21 @@ function ResizeTrigger(props) {
   var trigger = renderResizeTrigger();
   var next = renderNextCollapsedTrigger();
   var renderIcon = function() {
-    return React.createElement("div", {
+    return ReactExports.createElement("div", {
       className: prefixCls + "-icon-wrapper"
     }, prev, trigger, next);
   };
   if (!resizable) {
-    return React.createElement("div", {
+    return ReactExports.createElement("div", {
       className: classNames
     }, isFunction(renderChildren) ? renderChildren(prev, trigger, next) : children || renderIcon());
   }
-  return React.createElement(ResizeObserverComponent, {
+  return ReactExports.createElement(ResizeObserverComponent, {
     onResize,
     getTargetDOMNode: function() {
       return refDiv.current;
     }
-  }, React.createElement("div", __assign$8({
+  }, ReactExports.createElement("div", __assign$8({
     ref: refDiv
   }, omit(rest, ["style"]), {
     className: classNames,
@@ -17139,7 +17140,7 @@ function Split(props, ref) {
     }
   }, [size]);
   var Tag = component;
-  var firstPaneNode = React.createElement("div", {
+  var firstPaneNode = ReactExports.createElement("div", {
     className: cs$1(prefixCls + "-pane", "first-pane"),
     style: {
       flexBasis: getFirstPaneSize()
@@ -17148,18 +17149,18 @@ function Split(props, ref) {
       paneContainers.current[0] = el;
     }
   }, firstPane);
-  var secondPaneNode = React.createElement("div", {
+  var secondPaneNode = ReactExports.createElement("div", {
     className: cs$1(prefixCls + "-pane", "second-pane"),
     ref: function(el) {
       paneContainers.current[1] = el;
     }
   }, secondPane);
   var paneNodeArr = isReverse ? [secondPaneNode, firstPaneNode] : [firstPaneNode, secondPaneNode];
-  return React.createElement(Tag, {
+  return ReactExports.createElement(Tag, {
     style,
     className: classNames,
     ref: wrapperRef
-  }, paneNodeArr[0], !disabled && React.createElement(ResizeTrigger, {
+  }, paneNodeArr[0], !disabled && ReactExports.createElement(ResizeTrigger, {
     className: prefixCls + "-trigger",
     direction: isTriggerHorizontal ? DIRECTION_HORIZONTAL$1 : DIRECTION_VERTICAL$1,
     icon,
@@ -17448,7 +17449,7 @@ function SplitGroup(props, ref) {
     });
     setCollapsedStatus(newCollapsedStatus);
   }, [offsets]);
-  return React.createElement(Tag, __assign$7({}, omit(rest, ["onMovingStart", "onPaneResize", "onMoving", "onMovingEnd"]), {
+  return ReactExports.createElement(Tag, __assign$7({}, omit(rest, ["onMovingStart", "onPaneResize", "onMoving", "onMovingEnd"]), {
     style,
     className: classNames,
     ref: wrapperRef
@@ -17457,9 +17458,9 @@ function SplitGroup(props, ref) {
     var _c2 = getCollapsedConfig(index2), hasPrev = _c2.hasPrev, hasNext = _c2.hasNext;
     var prevConfig = isObject(collapsible) && isObject(collapsible.prev) ? collapsible.prev : {};
     var nextConfig = isObject(collapsible) && isObject(collapsible.next) ? collapsible.next : {};
-    return React.createElement(React.Fragment, {
+    return ReactExports.createElement(ReactExports.Fragment, {
       key: index2
-    }, React.createElement("div", {
+    }, ReactExports.createElement("div", {
       className: prefixCls + "-pane",
       style: {
         flexBasis: getPaneSize(index2)
@@ -17467,7 +17468,7 @@ function SplitGroup(props, ref) {
       ref: function(el) {
         return paneContainers.current[index2] = el;
       }
-    }, content), !disabled && index2 !== panes.length - 1 && React.createElement(ResizeTrigger, {
+    }, content), !disabled && index2 !== panes.length - 1 && ReactExports.createElement(ResizeTrigger, {
       className: prefixCls + "-trigger",
       direction: isTriggerHorizontal ? DIRECTION_HORIZONTAL : DIRECTION_VERTICAL,
       icon,
@@ -17689,13 +17690,13 @@ function ResizeBox(baseProps, ref) {
     height
   } : {});
   var Tag = component;
-  return React.createElement(Tag, __assign$6({}, omit(rest, ["onMovingStart", "onMoving", "onMovingEnd"]), {
+  return ReactExports.createElement(Tag, __assign$6({}, omit(rest, ["onMovingStart", "onMoving", "onMovingEnd"]), {
     style: wrapperStyles,
     className: classNames,
     ref: wrapperRef
   }), children, realDirections.map(function(direction) {
     if (allDirections.indexOf(direction) !== -1) {
-      return React.createElement(ResizeTrigger, {
+      return ReactExports.createElement(ResizeTrigger, {
         key: direction,
         className: prefixCls + "-direction-" + direction,
         direction: getIsHorizontal(direction) ? "horizontal" : "vertical",
@@ -17893,8 +17894,8 @@ function Sider$1(props, ref) {
   var TagName = resizable ? ResizeBoxComponent : "aside";
   var renderTrigger = function() {
     var _a3;
-    var triggerIcon = trigger || (collapsed ? reverseArrow ? React.createElement(IconLeft, null) : React.createElement(IconRight, null) : reverseArrow ? React.createElement(IconRight, null) : React.createElement(IconLeft, null));
-    return collapsible && trigger !== null ? React.createElement("div", {
+    var triggerIcon = trigger || (collapsed ? reverseArrow ? ReactExports.createElement(IconLeft, null) : ReactExports.createElement(IconRight, null) : reverseArrow ? ReactExports.createElement(IconRight, null) : ReactExports.createElement(IconLeft, null));
+    return collapsible && trigger !== null ? ReactExports.createElement("div", {
       style: {
         width: siderWidth
       },
@@ -17921,18 +17922,18 @@ function Sider$1(props, ref) {
     }
     return {};
   }, [resizable, resizeDirections, siderWidth, resizeBoxProps]);
-  return React.createElement(SiderContext.Provider, {
+  return ReactExports.createElement(SiderContext.Provider, {
     value: {
       siderCollapsed: collapsed,
       collapsedWidth
     }
-  }, React.createElement(TagName, __assign$4({
+  }, ReactExports.createElement(TagName, __assign$4({
     ref,
     style: __assign$4({
       width: siderWidth
     }, style),
     className: cs$1(prefixCls, (_a2 = {}, _a2[prefixCls + "-light"] = theme === "light", _a2[prefixCls + "-has-trigger"] = trigger !== null && collapsible, _a2[prefixCls + "-collapsed"] = collapsed, _a2), className)
-  }, resizeProps), React.createElement("div", {
+  }, resizeProps), ReactExports.createElement("div", {
     className: prefixCls + "-children"
   }, children), renderTrigger()));
 }
@@ -17963,7 +17964,7 @@ function Header$1(props, ref) {
   var className = props.className, children = props.children, rest = __rest$3(props, ["className", "children"]);
   var prefixCls = getPrefixCls("layout-header");
   var classNames = cs$1(prefixCls, className);
-  return React.createElement("header", __assign$3({
+  return ReactExports.createElement("header", __assign$3({
     ref
   }, rest, {
     className: classNames
@@ -17994,7 +17995,7 @@ function Footer(props, ref) {
   var getPrefixCls = reactExports.useContext(ConfigContext).getPrefixCls;
   var prefixCls = getPrefixCls("layout-footer");
   var classNames = cs$1(prefixCls, className);
-  return React.createElement("footer", __assign$2({
+  return ReactExports.createElement("footer", __assign$2({
     ref
   }, rest, {
     className: classNames
@@ -18025,7 +18026,7 @@ function Content$1(props, ref) {
   var getPrefixCls = reactExports.useContext(ConfigContext).getPrefixCls;
   var prefixCls = getPrefixCls("layout-content");
   var classNames = cs$1(prefixCls, className);
-  return React.createElement("main", __assign$1({
+  return ReactExports.createElement("main", __assign$1({
     ref
   }, rest, {
     className: classNames
@@ -18087,14 +18088,14 @@ function Layout(baseProps, ref) {
   var _c = __read(reactExports.useState([]), 2), siders = _c[0], setSiders = _c[1];
   var prefixCls = getPrefixCls("layout");
   var classNames = cs$1(prefixCls, (_a2 = {}, _a2[prefixCls + "-has-sider"] = typeof hasSider === "boolean" ? hasSider : siders.length > 0, _a2), className);
-  return React.createElement("section", __assign({
+  return ReactExports.createElement("section", __assign({
     ref
   }, rest, {
     className: classNames
-  }), React.Children.map(children, function(child) {
+  }), ReactExports.Children.map(children, function(child) {
     var sign = get(child, "type.__ARCO_SIGN__") || get(child, "props.sign");
     if (child && sign === "sider") {
-      return React.cloneElement(child, {
+      return ReactExports.cloneElement(child, {
         onSiderMount: function(id) {
           return setSiders(__spreadArray(__spreadArray([], __read(siders), false), [id], false));
         },
@@ -18132,8 +18133,8 @@ const layoutRouter = [{
   componentPath: "Welcome",
   hidden: true
 }, {
-  name: "第一页",
-  key: "one-page",
+  name: "工作流",
+  key: "react-flow",
   componentPath: "OnePage"
 }];
 var classnames = { exports: {} };
@@ -18304,7 +18305,7 @@ function getFlattenRoutes(routes, father) {
   function travel(_routes) {
     _routes.forEach((route) => {
       if (route.componentPath) {
-        route.component = reactExports.lazy(() => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../pages/layout/OnePage/index.tsx": () => __vitePreload(() => import("./index-Elr7jxH9.js"), true ? [] : void 0), "../pages/layout/Welcome/index.tsx": () => __vitePreload(() => import("./index-BoxFwjMg.js"), true ? [] : void 0) }), `../pages/${father}/${route.componentPath}/index.tsx`, 5));
+        route.component = reactExports.lazy(() => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../pages/layout/OnePage/index.tsx": () => __vitePreload(() => import("./index-B7qB84bA.js"), true ? __vite__mapDeps([0,1]) : void 0), "../pages/layout/Welcome/index.tsx": () => __vitePreload(() => import("./index-CV9q7VCG.js"), true ? [] : void 0) }), `../pages/${father}/${route.componentPath}/index.tsx`, 5));
         res.push(route);
       }
     });
@@ -18351,8 +18352,12 @@ function Main() {
 }
 clientExports.createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsxRuntimeExports.jsx(Main, {}));
 export {
+  ReactExports as R,
+  requireShim as a,
+  reactExports as b,
+  getDefaultExportFromCjs as g,
   jsxRuntimeExports as j,
   observer as o,
-  reactExports as r,
+  requireReact as r,
   useStores as u
 };

@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports } from "./index-CI60g4mU.js";
+import { j as jsxRuntimeExports } from "./index-LgaYIyPa.js";
 function WelCome() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", {
     style: {
