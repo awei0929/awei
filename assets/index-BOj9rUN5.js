@@ -1,4 +1,4 @@
-import { r as requireReact, a as requireShim, g as getDefaultExportFromCjs, R as ReactExports, b as reactExports, j as jsxRuntimeExports, o as observer, u as useStores } from "./index-evjrWc-m.js";
+import { r as requireShim, g as getDefaultExportFromCjs, j as jsxRuntimeExports, o as observer, u as useStores } from "./index-BzCn9i11.js";
 function cc(names) {
   if (typeof names === "string" || typeof names === "number") return "" + names;
   let out = "";
@@ -5768,13 +5768,13 @@ var hasRequiredWithSelector_production;
 function requireWithSelector_production() {
   if (hasRequiredWithSelector_production) return withSelector_production;
   hasRequiredWithSelector_production = 1;
-  var React = requireReact(), shim = requireShim();
+  var React = window["React"], shim = requireShim();
   function is(x, y) {
     return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
   }
-  var objectIs = "function" === typeof Object.is ? Object.is : is, useSyncExternalStore = shim.useSyncExternalStore, useRef = React.useRef, useEffect = React.useEffect, useMemo = React.useMemo, useDebugValue2 = React.useDebugValue;
+  var objectIs = "function" === typeof Object.is ? Object.is : is, useSyncExternalStore = shim.useSyncExternalStore, useRef2 = React.useRef, useEffect2 = React.useEffect, useMemo2 = React.useMemo, useDebugValue2 = React.useDebugValue;
   withSelector_production.useSyncExternalStoreWithSelector = function(subscribe, getSnapshot, getServerSnapshot, selector2, isEqual) {
-    var instRef = useRef(null);
+    var instRef = useRef2(null);
     if (null === instRef.current) {
       var inst = {
         hasValue: false,
@@ -5782,7 +5782,7 @@ function requireWithSelector_production() {
       };
       instRef.current = inst;
     } else inst = instRef.current;
-    instRef = useMemo(function() {
+    instRef = useMemo2(function() {
       function memoizedSelector(nextSnapshot) {
         if (!hasMemo) {
           hasMemo = true;
@@ -5809,7 +5809,7 @@ function requireWithSelector_production() {
       }];
     }, [getSnapshot, getServerSnapshot, selector2, isEqual]);
     var value = useSyncExternalStore(subscribe, instRef[0], instRef[1]);
-    useEffect(function() {
+    useEffect2(function() {
       inst.hasValue = true;
       inst.value = value;
     }, [value]);
@@ -5854,6 +5854,7 @@ const createStoreImpl = (createState) => {
   return api;
 };
 const createStore$1 = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
+const ReactExports = window["React"];
 const { useDebugValue } = ReactExports;
 const { useSyncExternalStoreWithSelector } = useSyncExternalStoreExports;
 const identity = (arg) => arg;
@@ -5911,22 +5912,33 @@ function shallow$1(objA, objB) {
   }
   return true;
 }
-const StoreContext = reactExports.createContext(null);
+const createContext = window["React"].createContext;
+const useContext = window["React"].useContext;
+const useMemo = window["React"].useMemo;
+const forwardRef = window["React"].forwardRef;
+const useEffect$1 = window["React"].useEffect;
+const useRef = window["React"].useRef;
+const useState = window["React"].useState;
+const useLayoutEffect = window["React"].useLayoutEffect;
+const useCallback$1 = window["React"].useCallback;
+const memo = window["React"].memo;
+window["ReactDOM"].createPortal;
+const StoreContext = createContext(null);
 const Provider$1 = StoreContext.Provider;
 const zustandErrorMessage = errorMessages["error001"]();
 function useStore(selector2, equalityFn) {
-  const store = reactExports.useContext(StoreContext);
+  const store = useContext(StoreContext);
   if (store === null) {
     throw new Error(zustandErrorMessage);
   }
   return useStoreWithEqualityFn(store, selector2, equalityFn);
 }
 function useStoreApi() {
-  const store = reactExports.useContext(StoreContext);
+  const store = useContext(StoreContext);
   if (store === null) {
     throw new Error(zustandErrorMessage);
   }
-  return reactExports.useMemo(() => ({
+  return useMemo(() => ({
     getState: store.getState,
     setState: store.setState,
     subscribe: store.subscribe
@@ -5981,7 +5993,7 @@ function A11yDescriptions({
   });
 }
 const selector$n = (s) => s.userSelectionActive ? "none" : "all";
-const Panel = reactExports.forwardRef(({
+const Panel = forwardRef(({
   position = "top-left",
   children: children2,
   className,
@@ -6051,7 +6063,7 @@ function SelectionListenerInner({
     selectedNodes,
     selectedEdges
   } = useStore(selector$m, areEqual);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     const params = {
       nodes: selectedNodes,
       edges: selectedEdges
@@ -6118,15 +6130,15 @@ function StoreUpdater(props) {
     setPaneClickDistance
   } = useStore(selector$l, shallow$1);
   const store = useStoreApi();
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     setDefaultNodesAndEdges(props.defaultNodes, props.defaultEdges);
     return () => {
       previousFields.current = initPrevValues;
       reset();
     };
   }, []);
-  const previousFields = reactExports.useRef(initPrevValues);
-  reactExports.useEffect(
+  const previousFields = useRef(initPrevValues);
+  useEffect$1(
     () => {
       for (const fieldName of fieldsToTrack) {
         const fieldValue = props[fieldName];
@@ -6165,8 +6177,8 @@ function getMediaQuery() {
 }
 function useColorModeClass(colorMode) {
   var _a;
-  const [colorModeClass, setColorModeClass] = reactExports.useState(colorMode === "system" ? null : colorMode);
-  reactExports.useEffect(() => {
+  const [colorModeClass, setColorModeClass] = useState(colorMode === "system" ? null : colorMode);
+  useEffect$1(() => {
     if (colorMode !== "system") {
       setColorModeClass(colorMode);
       return;
@@ -6186,10 +6198,10 @@ function useKeyPress(keyCode = null, options = {
   target: defaultDoc,
   actInsideInputWithModifier: true
 }) {
-  const [keyPressed, setKeyPressed] = reactExports.useState(false);
-  const modifierPressed = reactExports.useRef(false);
-  const pressedKeys = reactExports.useRef(/* @__PURE__ */ new Set([]));
-  const [keyCodes, keysToWatch] = reactExports.useMemo(() => {
+  const [keyPressed, setKeyPressed] = useState(false);
+  const modifierPressed = useRef(false);
+  const pressedKeys = useRef(/* @__PURE__ */ new Set([]));
+  const [keyCodes, keysToWatch] = useMemo(() => {
     if (keyCode !== null) {
       const keyCodeArr = Array.isArray(keyCode) ? keyCode : [keyCode];
       const keys = keyCodeArr.filter((kc) => typeof kc === "string").map((kc) => kc.replace("+", "\n").replace("\n\n", "\n+").split("\n"));
@@ -6198,7 +6210,7 @@ function useKeyPress(keyCode = null, options = {
     }
     return [[], []];
   }, [keyCode]);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     const target = (options == null ? void 0 : options.target) || defaultDoc;
     if (keyCode !== null) {
       const downHandler = (event) => {
@@ -6257,7 +6269,7 @@ function useKeyOrCode(eventCode, keysToWatch) {
 }
 const useViewportHelper = () => {
   const store = useStoreApi();
-  return reactExports.useMemo(() => {
+  return useMemo(() => {
     return {
       zoomIn: (options) => {
         const {
@@ -6575,12 +6587,12 @@ function elementToRemoveChange(item) {
 const isNode = (element) => isNodeBase(element);
 const isEdge = (element) => isEdgeBase(element);
 function fixedForwardRef(render) {
-  return reactExports.forwardRef(render);
+  return forwardRef(render);
 }
-const useIsomorphicLayoutEffect = typeof window !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect$1;
 function useQueue(runQueue) {
-  const [serial, setSerial] = reactExports.useState(BigInt(0));
-  const [queue] = reactExports.useState(() => createQueue(() => setSerial((n) => n + BigInt(1))));
+  const [serial, setSerial] = useState(BigInt(0));
+  const [queue] = useState(() => createQueue(() => setSerial((n) => n + BigInt(1))));
   useIsomorphicLayoutEffect(() => {
     const queueItems = queue.get();
     if (queueItems.length) {
@@ -6603,12 +6615,12 @@ function createQueue(cb) {
     }
   };
 }
-const BatchContext = reactExports.createContext(null);
+const BatchContext = createContext(null);
 function BatchProvider({
   children: children2
 }) {
   const store = useStoreApi();
-  const nodeQueueHandler = reactExports.useCallback((queueItems) => {
+  const nodeQueueHandler = useCallback$1((queueItems) => {
     const {
       nodes = [],
       setNodes,
@@ -6630,7 +6642,7 @@ function BatchProvider({
     }
   }, []);
   const nodeQueue = useQueue(nodeQueueHandler);
-  const edgeQueueHandler = reactExports.useCallback((queueItems) => {
+  const edgeQueueHandler = useCallback$1((queueItems) => {
     const {
       edges = [],
       setEdges,
@@ -6652,7 +6664,7 @@ function BatchProvider({
     }
   }, []);
   const edgeQueue = useQueue(edgeQueueHandler);
-  const value = reactExports.useMemo(() => ({
+  const value = useMemo(() => ({
     nodeQueue,
     edgeQueue
   }), []);
@@ -6662,7 +6674,7 @@ function BatchProvider({
   });
 }
 function useBatchContext() {
-  const batchContext = reactExports.useContext(BatchContext);
+  const batchContext = useContext(BatchContext);
   if (!batchContext) {
     throw new Error("useBatchContext must be used within a BatchProvider");
   }
@@ -6674,7 +6686,7 @@ function useReactFlow() {
   const store = useStoreApi();
   const batchContext = useBatchContext();
   const viewportInitialized = useStore(selector$k);
-  const generalHelper = reactExports.useMemo(() => {
+  const generalHelper = useMemo(() => {
     const getInternalNode = (id2) => store.getState().nodeLookup.get(id2);
     const setNodes = (payload) => {
       batchContext.nodeQueue.push(payload);
@@ -6906,7 +6918,7 @@ function useReactFlow() {
       }
     };
   }, []);
-  return reactExports.useMemo(() => {
+  return useMemo(() => {
     return {
       ...generalHelper,
       ...viewportHelper,
@@ -6931,7 +6943,7 @@ function useGlobalKeyHandler({
   const multiSelectionKeyPressed = useKeyPress(multiSelectionKeyCode, {
     target: win$1
   });
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     if (deleteKeyPressed) {
       const {
         edges,
@@ -6946,7 +6958,7 @@ function useGlobalKeyHandler({
       });
     }
   }, [deleteKeyPressed]);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     store.setState({
       multiSelectionActive: multiSelectionKeyPressed
     });
@@ -6954,7 +6966,7 @@ function useGlobalKeyHandler({
 }
 function useResizeHandler(domNode) {
   const store = useStoreApi();
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     const updateDimensions = () => {
       var _a, _b;
       if (!domNode.current) {
@@ -7017,15 +7029,15 @@ function ZoomPane({
   paneClickDistance
 }) {
   const store = useStoreApi();
-  const zoomPane = reactExports.useRef(null);
+  const zoomPane = useRef(null);
   const {
     userSelectionActive,
     lib
   } = useStore(selector$j, shallow$1);
   const zoomActivationKeyPressed = useKeyPress(zoomActivationKeyCode);
-  const panZoom = reactExports.useRef();
+  const panZoom = useRef();
   useResizeHandler(zoomPane);
-  const onTransformChange = reactExports.useCallback((transform2) => {
+  const onTransformChange = useCallback$1((transform2) => {
     onViewportChange == null ? void 0 : onViewportChange({
       x: transform2[0],
       y: transform2[1],
@@ -7037,7 +7049,7 @@ function ZoomPane({
       });
     }
   }, [onViewportChange, isControlledViewport]);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     if (zoomPane.current) {
       panZoom.current = XYPanZoom({
         domNode: zoomPane.current,
@@ -7090,7 +7102,7 @@ function ZoomPane({
       };
     }
   }, []);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     var _a;
     (_a = panZoom.current) == null ? void 0 : _a.update({
       onPaneContextMenu,
@@ -7168,20 +7180,20 @@ function Pane({
   onPaneMouseLeave,
   children: children2
 }) {
-  const container = reactExports.useRef(null);
+  const container = useRef(null);
   const store = useStoreApi();
-  const prevSelectedNodesCount = reactExports.useRef(0);
-  const prevSelectedEdgesCount = reactExports.useRef(0);
-  const containerBounds = reactExports.useRef();
-  const edgeIdLookup = reactExports.useRef(/* @__PURE__ */ new Map());
+  const prevSelectedNodesCount = useRef(0);
+  const prevSelectedEdgesCount = useRef(0);
+  const containerBounds = useRef();
+  const edgeIdLookup = useRef(/* @__PURE__ */ new Map());
   const {
     userSelectionActive,
     elementsSelectable,
     dragging
   } = useStore(selector$h, shallow$1);
   const hasActiveSelection = elementsSelectable && (isSelecting || userSelectionActive);
-  const selectionInProgress = reactExports.useRef(false);
-  const selectionStarted = reactExports.useRef(false);
+  const selectionInProgress = useRef(false);
+  const selectionStarted = useRef(false);
   const resetUserSelection = () => {
     store.setState({
       userSelectionActive: false,
@@ -7390,9 +7402,9 @@ function useDrag({
   nodeClickDistance
 }) {
   const store = useStoreApi();
-  const [dragging, setDragging] = reactExports.useState(false);
-  const xyDrag = reactExports.useRef();
-  reactExports.useEffect(() => {
+  const [dragging, setDragging] = useState(false);
+  const xyDrag = useRef();
+  useEffect$1(() => {
     xyDrag.current = XYDrag({
       getStoreItems: () => store.getState(),
       onNodeMouseDown: (id2) => {
@@ -7410,7 +7422,7 @@ function useDrag({
       }
     });
   }, []);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     var _a, _b;
     if (disabled) {
       (_a = xyDrag.current) == null ? void 0 : _a.destroy();
@@ -7434,7 +7446,7 @@ function useDrag({
 const selectedAndDraggable = (nodesDraggable) => (n) => n.selected && (n.draggable || nodesDraggable && typeof n.draggable === "undefined");
 function useMoveSelectedNodes() {
   const store = useStoreApi();
-  const moveSelectedNodes = reactExports.useCallback((params) => {
+  const moveSelectedNodes = useCallback$1((params) => {
     const {
       nodeExtent,
       snapToGrid,
@@ -7481,11 +7493,11 @@ function useMoveSelectedNodes() {
   }, []);
   return moveSelectedNodes;
 }
-const NodeIdContext = reactExports.createContext(null);
+const NodeIdContext = createContext(null);
 const Provider = NodeIdContext.Provider;
 NodeIdContext.Consumer;
 const useNodeId = () => {
-  const nodeId = reactExports.useContext(NodeIdContext);
+  const nodeId = useContext(NodeIdContext);
   return nodeId;
 };
 const selector$g = (s) => ({
@@ -7695,7 +7707,7 @@ function HandleComponent({
     children: children2
   });
 }
-const Handle = reactExports.memo(fixedForwardRef(HandleComponent));
+const Handle = memo(fixedForwardRef(HandleComponent));
 function InputNode({
   data,
   isConnectable,
@@ -7809,8 +7821,8 @@ function NodesSelection({
     userSelectionActive
   } = useStore(selector$f, shallow$1);
   const moveSelectedNodes = useMoveSelectedNodes();
-  const nodeRef = reactExports.useRef(null);
-  reactExports.useEffect(() => {
+  const nodeRef = useRef(null);
+  useEffect$1(() => {
     var _a;
     if (!disableKeyboardA11y) {
       (_a = nodeRef.current) == null ? void 0 : _a.focus({
@@ -7962,7 +7974,7 @@ function FlowRendererComponent({
   });
 }
 FlowRendererComponent.displayName = "FlowRenderer";
-const FlowRenderer = reactExports.memo(FlowRendererComponent);
+const FlowRenderer = memo(FlowRendererComponent);
 const selector$d = (onlyRenderVisible) => (s) => {
   return onlyRenderVisible ? getNodesInside(s.nodeLookup, {
     x: 0,
@@ -7972,13 +7984,13 @@ const selector$d = (onlyRenderVisible) => (s) => {
   }, s.transform, true).map((node) => node.id) : Array.from(s.nodeLookup.keys());
 };
 function useVisibleNodeIds(onlyRenderVisible) {
-  const nodeIds = useStore(reactExports.useCallback(selector$d(onlyRenderVisible), [onlyRenderVisible]), shallow$1);
+  const nodeIds = useStore(useCallback$1(selector$d(onlyRenderVisible), [onlyRenderVisible]), shallow$1);
   return nodeIds;
 }
 const selector$c = (s) => s.updateNodeInternals;
 function useResizeObserver() {
   const updateNodeInternals2 = useStore(selector$c);
-  const [resizeObserver] = reactExports.useState(() => {
+  const [resizeObserver] = useState(() => {
     if (typeof ResizeObserver === "undefined") {
       return null;
     }
@@ -7995,7 +8007,7 @@ function useResizeObserver() {
       updateNodeInternals2(updates);
     });
   });
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     return () => {
       resizeObserver == null ? void 0 : resizeObserver.disconnect();
     };
@@ -8009,13 +8021,13 @@ function useNodeObserver({
   resizeObserver
 }) {
   const store = useStoreApi();
-  const nodeRef = reactExports.useRef(null);
-  const observedNode = reactExports.useRef(null);
-  const prevSourcePosition = reactExports.useRef(node.sourcePosition);
-  const prevTargetPosition = reactExports.useRef(node.targetPosition);
-  const prevType = reactExports.useRef(nodeType);
+  const nodeRef = useRef(null);
+  const observedNode = useRef(null);
+  const prevSourcePosition = useRef(node.sourcePosition);
+  const prevTargetPosition = useRef(node.targetPosition);
+  const prevType = useRef(nodeType);
   const isInitialized = hasDimensions && !!node.internals.handleBounds;
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     if (nodeRef.current && !node.hidden && (!isInitialized || observedNode.current !== nodeRef.current)) {
       if (observedNode.current) {
         resizeObserver == null ? void 0 : resizeObserver.unobserve(observedNode.current);
@@ -8024,7 +8036,7 @@ function useNodeObserver({
       observedNode.current = nodeRef.current;
     }
   }, [isInitialized, node.hidden]);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     return () => {
       if (observedNode.current) {
         resizeObserver == null ? void 0 : resizeObserver.unobserve(observedNode.current);
@@ -8032,7 +8044,7 @@ function useNodeObserver({
       }
     };
   }, []);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     if (nodeRef.current) {
       const typeChanged = prevType.current !== nodeType;
       const sourcePosChanged = prevSourcePosition.current !== node.sourcePosition;
@@ -8306,9 +8318,9 @@ function NodeRendererComponent(props) {
   });
 }
 NodeRendererComponent.displayName = "NodeRenderer";
-const NodeRenderer = reactExports.memo(NodeRendererComponent);
+const NodeRenderer = memo(NodeRendererComponent);
 function useVisibleEdgeIds(onlyRenderVisible) {
-  const edgeIds = useStore(reactExports.useCallback((s) => {
+  const edgeIds = useStore(useCallback$1((s) => {
     if (!onlyRenderVisible) {
       return s.edges.map((edge) => edge.id);
     }
@@ -8368,7 +8380,7 @@ const MarkerSymbols = {
 };
 function useMarkerSymbol(type) {
   const store = useStoreApi();
-  const symbol = reactExports.useMemo(() => {
+  const symbol = useMemo(() => {
     var _a, _b;
     const symbolExists = Object.prototype.hasOwnProperty.call(MarkerSymbols, type);
     if (!symbolExists) {
@@ -8415,7 +8427,7 @@ const MarkerDefinitions = ({
 }) => {
   const edges = useStore((s) => s.edges);
   const defaultEdgeOptions = useStore((s) => s.defaultEdgeOptions);
-  const markers = reactExports.useMemo(() => {
+  const markers = useMemo(() => {
     const markers2 = createMarkerIds(edges, {
       id: rfId,
       defaultColor,
@@ -8444,7 +8456,7 @@ const MarkerDefinitions = ({
   });
 };
 MarkerDefinitions.displayName = "MarkerDefinitions";
-var MarkerDefinitions$1 = reactExports.memo(MarkerDefinitions);
+var MarkerDefinitions$1 = memo(MarkerDefinitions);
 function EdgeTextComponent({
   x,
   y,
@@ -8458,15 +8470,15 @@ function EdgeTextComponent({
   className,
   ...rest
 }) {
-  const [edgeTextBbox, setEdgeTextBbox] = reactExports.useState({
+  const [edgeTextBbox, setEdgeTextBbox] = useState({
     x: 1,
     y: 0,
     width: 0,
     height: 0
   });
   const edgeTextClasses = cc(["react-flow__edge-textwrapper", className]);
-  const edgeTextRef = reactExports.useRef(null);
-  reactExports.useEffect(() => {
+  const edgeTextRef = useRef(null);
+  useEffect$1(() => {
     if (edgeTextRef.current) {
       const textBbox = edgeTextRef.current.getBBox();
       setEdgeTextBbox({
@@ -8505,7 +8517,7 @@ function EdgeTextComponent({
   });
 }
 EdgeTextComponent.displayName = "EdgeText";
-const EdgeText = reactExports.memo(EdgeTextComponent);
+const EdgeText = memo(EdgeTextComponent);
 function BaseEdge({
   path,
   labelX,
@@ -8590,7 +8602,7 @@ function getSimpleBezierPath({
   return [`M${sourceX},${sourceY} C${sourceControlX},${sourceControlY} ${targetControlX},${targetControlY} ${targetX},${targetY}`, labelX, labelY, offsetX, offsetY];
 }
 function createSimpleBezierEdge(params) {
-  return reactExports.memo(({
+  return memo(({
     id: id2,
     sourceX,
     sourceY,
@@ -8645,7 +8657,7 @@ const SimpleBezierEdgeInternal = createSimpleBezierEdge({
 SimpleBezierEdge.displayName = "SimpleBezierEdge";
 SimpleBezierEdgeInternal.displayName = "SimpleBezierEdgeInternal";
 function createSmoothStepEdge(params) {
-  return reactExports.memo(({
+  return memo(({
     id: id2,
     sourceX,
     sourceY,
@@ -8703,7 +8715,7 @@ const SmoothStepEdgeInternal = createSmoothStepEdge({
 SmoothStepEdge.displayName = "SmoothStepEdge";
 SmoothStepEdgeInternal.displayName = "SmoothStepEdgeInternal";
 function createStepEdge(params) {
-  return reactExports.memo(({
+  return memo(({
     id: id2,
     ...props
   }) => {
@@ -8712,7 +8724,7 @@ function createStepEdge(params) {
     return jsxRuntimeExports.jsx(SmoothStepEdge, {
       ...props,
       id: _id,
-      pathOptions: reactExports.useMemo(() => {
+      pathOptions: useMemo(() => {
         var _a2;
         return {
           borderRadius: 0,
@@ -8731,7 +8743,7 @@ const StepEdgeInternal = createStepEdge({
 StepEdge.displayName = "StepEdge";
 StepEdgeInternal.displayName = "StepEdgeInternal";
 function createStraightEdge(params) {
-  return reactExports.memo(({
+  return memo(({
     id: id2,
     sourceX,
     sourceY,
@@ -8782,7 +8794,7 @@ const StraightEdgeInternal = createStraightEdge({
 StraightEdge.displayName = "StraightEdge";
 StraightEdgeInternal.displayName = "StraightEdgeInternal";
 function createBezierEdge(params) {
-  return reactExports.memo(({
+  return memo(({
     id: id2,
     sourceX,
     sourceY,
@@ -9025,9 +9037,9 @@ function EdgeWrapper({
   const isFocusable = !!(edge.focusable || edgesFocusable && typeof edge.focusable === "undefined");
   const isReconnectable = typeof onReconnect !== "undefined" && (edge.reconnectable || edgesReconnectable && typeof edge.reconnectable === "undefined");
   const isSelectable = !!(edge.selectable || elementsSelectable && typeof edge.selectable === "undefined");
-  const edgeRef = reactExports.useRef(null);
-  const [updateHover, setUpdateHover] = reactExports.useState(false);
-  const [reconnecting, setReconnecting] = reactExports.useState(false);
+  const edgeRef = useRef(null);
+  const [updateHover, setUpdateHover] = useState(false);
+  const [reconnecting, setReconnecting] = useState(false);
   const store = useStoreApi();
   const {
     zIndex,
@@ -9037,7 +9049,7 @@ function EdgeWrapper({
     targetY,
     sourcePosition,
     targetPosition
-  } = useStore(reactExports.useCallback((store2) => {
+  } = useStore(useCallback$1((store2) => {
     const sourceNode = store2.nodeLookup.get(edge.source);
     const targetNode = store2.nodeLookup.get(edge.target);
     if (!sourceNode || !targetNode) {
@@ -9067,8 +9079,8 @@ function EdgeWrapper({
       ...edgePosition || nullPosition
     };
   }, [edge.source, edge.target, edge.sourceHandle, edge.targetHandle, edge.selected, edge.zIndex]), shallow$1);
-  const markerStartUrl = reactExports.useMemo(() => edge.markerStart ? `url('#${getMarkerId(edge.markerStart, rfId)}')` : void 0, [edge.markerStart, rfId]);
-  const markerEndUrl = reactExports.useMemo(() => edge.markerEnd ? `url('#${getMarkerId(edge.markerEnd, rfId)}')` : void 0, [edge.markerEnd, rfId]);
+  const markerStartUrl = useMemo(() => edge.markerStart ? `url('#${getMarkerId(edge.markerStart, rfId)}')` : void 0, [edge.markerStart, rfId]);
+  const markerEndUrl = useMemo(() => edge.markerEnd ? `url('#${getMarkerId(edge.markerEnd, rfId)}')` : void 0, [edge.markerEnd, rfId]);
   if (edge.hidden || sourceX === null || sourceY === null || targetX === null || targetY === null) {
     return null;
   }
@@ -9277,7 +9289,7 @@ function EdgeRendererComponent({
   });
 }
 EdgeRendererComponent.displayName = "EdgeRenderer";
-const EdgeRenderer = reactExports.memo(EdgeRendererComponent);
+const EdgeRenderer = memo(EdgeRendererComponent);
 const selector$9 = (s) => `translate(${s.transform[0]}px,${s.transform[1]}px) scale(${s.transform[2]})`;
 function Viewport({
   children: children2
@@ -9293,8 +9305,8 @@ function Viewport({
 }
 function useOnInitHandler(onInit) {
   const rfInstance = useReactFlow();
-  const isInitialized = reactExports.useRef(false);
-  reactExports.useEffect(() => {
+  const isInitialized = useRef(false);
+  useEffect$1(() => {
     if (!isInitialized.current && rfInstance.viewportInitialized && onInit) {
       setTimeout(() => onInit(rfInstance), 1);
       isInitialized.current = true;
@@ -9308,7 +9320,7 @@ const selector$8 = (state) => {
 function useViewportSync(viewport) {
   const syncViewport = useStore(selector$8);
   const store = useStoreApi();
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     if (viewport) {
       syncViewport == null ? void 0 : syncViewport(viewport);
       store.setState({
@@ -9448,15 +9460,15 @@ const ConnectionLine = ({
 ConnectionLine.displayName = "ConnectionLine";
 const emptyTypes = {};
 function useNodeOrEdgeTypesWarning(nodeOrEdgeTypes = emptyTypes) {
-  reactExports.useRef(nodeOrEdgeTypes);
+  useRef(nodeOrEdgeTypes);
   useStoreApi();
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
   }, [nodeOrEdgeTypes]);
 }
 function useStylesLoadedWarning() {
   useStoreApi();
-  reactExports.useRef(false);
-  reactExports.useEffect(() => {
+  useRef(false);
+  useEffect$1(() => {
   }, []);
 }
 function GraphViewComponent({
@@ -9614,7 +9626,7 @@ function GraphViewComponent({
   });
 }
 GraphViewComponent.displayName = "GraphView";
-const GraphView = reactExports.memo(GraphViewComponent);
+const GraphView = memo(GraphViewComponent);
 const getInitialState = ({
   nodes,
   edges,
@@ -10122,7 +10134,7 @@ function ReactFlowProvider({
   nodeExtent,
   children: children2
 }) {
-  const [store] = reactExports.useState(() => createStore({
+  const [store] = useState(() => createStore({
     nodes,
     edges,
     defaultNodes,
@@ -10152,7 +10164,7 @@ function Wrapper({
   nodeOrigin,
   nodeExtent
 }) {
-  const isWrapped = reactExports.useContext(StoreContext);
+  const isWrapped = useContext(StoreContext);
   if (isWrapped) {
     return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {
       children: children2
@@ -10457,13 +10469,13 @@ function ReactFlow$1({
 }
 var index = fixedForwardRef(ReactFlow$1);
 function useNodesState(initialNodes2) {
-  const [nodes, setNodes] = reactExports.useState(initialNodes2);
-  const onNodesChange = reactExports.useCallback((changes) => setNodes((nds) => applyNodeChanges(changes, nds)), []);
+  const [nodes, setNodes] = useState(initialNodes2);
+  const onNodesChange = useCallback$1((changes) => setNodes((nds) => applyNodeChanges(changes, nds)), []);
   return [nodes, setNodes, onNodesChange];
 }
 function useEdgesState(initialEdges2) {
-  const [edges, setEdges] = reactExports.useState(initialEdges2);
-  const onEdgesChange = reactExports.useCallback((changes) => setEdges((eds) => applyEdgeChanges(changes, eds)), []);
+  const [edges, setEdges] = useState(initialEdges2);
+  const onEdgesChange = useCallback$1((changes) => setEdges((eds) => applyEdgeChanges(changes, eds)), []);
   return [edges, setEdges, onEdgesChange];
 }
 function LinePattern({
@@ -10519,7 +10531,7 @@ function BackgroundComponent({
   className,
   patternClassName
 }) {
-  const ref = reactExports.useRef(null);
+  const ref = useRef(null);
   const {
     transform: transform2,
     patternId
@@ -10571,7 +10583,7 @@ function BackgroundComponent({
   });
 }
 BackgroundComponent.displayName = "Background";
-const Background = reactExports.memo(BackgroundComponent);
+const Background = memo(BackgroundComponent);
 function PlusIcon() {
   return jsxRuntimeExports.jsx("svg", {
     xmlns: "http://www.w3.org/2000/svg",
@@ -10720,7 +10732,7 @@ function ControlsComponent({
   });
 }
 ControlsComponent.displayName = "Controls";
-const Controls = reactExports.memo(ControlsComponent);
+const Controls = memo(ControlsComponent);
 function MiniMapNodeComponent({
   id: id2,
   x,
@@ -10761,7 +10773,7 @@ function MiniMapNodeComponent({
     onClick: onClick ? (event) => onClick(event, id2) : void 0
   });
 }
-const MiniMapNode = reactExports.memo(MiniMapNodeComponent);
+const MiniMapNode = memo(MiniMapNodeComponent);
 const selectorNodeIds = (s) => s.nodes.map((node) => node.id);
 const getAttrFunction = (func) => func instanceof Function ? func : () => func;
 function MiniMapNodes({
@@ -10856,8 +10868,8 @@ function NodeComponentWrapperInner({
     id: node.id
   });
 }
-const NodeComponentWrapper = reactExports.memo(NodeComponentWrapperInner);
-var MiniMapNodes$1 = reactExports.memo(MiniMapNodes);
+const NodeComponentWrapper = memo(NodeComponentWrapperInner);
+var MiniMapNodes$1 = memo(MiniMapNodes);
 const defaultWidth = 200;
 const defaultHeight = 150;
 const selector$1 = (s) => {
@@ -10904,7 +10916,7 @@ function MiniMapComponent({
   offsetScale = 5
 }) {
   const store = useStoreApi();
-  const svg = reactExports.useRef(null);
+  const svg = useRef(null);
   const {
     boundingRect,
     viewBB,
@@ -10927,10 +10939,10 @@ function MiniMapComponent({
   const width = viewWidth + offset * 2;
   const height = viewHeight + offset * 2;
   const labelledBy = `${ARIA_LABEL_KEY}-${rfId}`;
-  const viewScaleRef = reactExports.useRef(0);
-  const minimapInstance = reactExports.useRef();
+  const viewScaleRef = useRef(0);
+  const minimapInstance = useRef();
   viewScaleRef.current = viewScale;
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     if (svg.current && panZoom) {
       minimapInstance.current = XYMinimap({
         domNode: svg.current,
@@ -10944,7 +10956,7 @@ function MiniMapComponent({
       };
     }
   }, [panZoom]);
-  reactExports.useEffect(() => {
+  useEffect$1(() => {
     var _a;
     (_a = minimapInstance.current) == null ? void 0 : _a.update({
       translateExtent,
@@ -10964,7 +10976,7 @@ function MiniMapComponent({
       y: y2
     });
   } : void 0;
-  const onSvgNodeClick = onNodeClick ? reactExports.useCallback((event, nodeId) => {
+  const onSvgNodeClick = onNodeClick ? useCallback$1((event, nodeId) => {
     const node = store.getState().nodeLookup.get(nodeId);
     onNodeClick(event, node);
   }, []) : void 0;
@@ -11013,7 +11025,7 @@ function MiniMapComponent({
   });
 }
 MiniMapComponent.displayName = "MiniMap";
-reactExports.memo(MiniMapComponent);
+memo(MiniMapComponent);
 function ResizeControl({
   nodeId,
   position,
@@ -11035,11 +11047,11 @@ function ResizeControl({
   const contextNodeId = useNodeId();
   const id2 = typeof nodeId === "string" ? nodeId : contextNodeId;
   const store = useStoreApi();
-  const resizeControlRef = reactExports.useRef(null);
+  const resizeControlRef = useRef(null);
   const defaultPosition = variant === ResizeControlVariant.Line ? "right" : "bottom-right";
   const controlPosition = position ?? defaultPosition;
-  const resizer = reactExports.useRef(null);
-  reactExports.useEffect(() => {
+  const resizer = useRef(null);
+  useEffect$1(() => {
     if (!resizeControlRef.current || !id2) {
       return;
     }
@@ -11176,7 +11188,8 @@ function ResizeControl({
     children: children2
   });
 }
-reactExports.memo(ResizeControl);
+memo(ResizeControl);
+const useCallback = window["React"].useCallback;
 const initialNodes = [{
   id: "1",
   data: {
@@ -11241,7 +11254,7 @@ const initialEdges = [{
 function EdgeTypesFlow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = reactExports.useCallback((params) => setEdges((eds) => {
+  const onConnect = useCallback((params) => setEdges((eds) => {
     console.log(params, "params");
     return addEdge({
       ...params,
@@ -11282,9 +11295,10 @@ function EdgeTypesFlow() {
   });
 }
 const ReactFlow = observer(EdgeTypesFlow);
+const useEffect = window["React"].useEffect;
 function OnePage() {
   const store = useStores();
-  reactExports.useEffect(() => {
+  useEffect(() => {
     store.app.initAppointAll();
   }, []);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", {

@@ -1,4 +1,4 @@
-import { b as reactExports, j as jsxRuntimeExports } from "./index-evjrWc-m.js";
+import { j as jsxRuntimeExports } from "./index-BzCn9i11.js";
 var livephotoskit$1 = { exports: {} };
 /*!
  * Copyright (c) 2017 Apple Inc. All rights reserved.
@@ -4245,8 +4245,10 @@ function requireLivephotoskit() {
 var livephotoskitExports = requireLivephotoskit();
 const img = "/awei/assets/img-CX0DLBWh.jpg";
 const vodeo = "/awei/assets/vodeo-BvwEXTdT.mov";
+const useEffect = window["React"].useEffect;
+const useRef = window["React"].useRef;
 function HomeLayout() {
-  const ref = reactExports.useRef(null);
+  const ref = useRef(null);
   const init = () => {
     const player = livephotoskitExports.Player(ref.current);
     player.photoSrc = img;
@@ -4263,7 +4265,7 @@ function HomeLayout() {
     player.currentTime = 0.25 * player.duration;
     player.currentTime = 0.1;
   };
-  reactExports.useEffect(() => {
+  useEffect(() => {
     if (ref.current) {
       init();
     }
