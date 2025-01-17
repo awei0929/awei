@@ -1,6 +1,5 @@
-import { Watermark } from '@arco-design/web-react';
 import Style from './index.module.less';
-import bizi from '@/assets/33.mp4';
+import bizi from '@/assets/long.jpg';
 import { useLayoutEffect, useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
@@ -26,16 +25,15 @@ function HomeLayout() {
 
   return (
     <>
-      <Watermark content="阿伟的官网" className={Style['home']}>
-        <video
+      <div className={Style['home-time']}>{currentTime}</div>
+      <div className={Style['home']}>
+        <img
           className={Style['home-video']}
-          loop
-          ref={ref}
           src={bizi}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-      </Watermark>
-      <div className={Style['home-time']}>{currentTime}</div>
+      </div>
+
       <div className={Style['home-link']}>
         <div
           className={Style['home-link-item']}
