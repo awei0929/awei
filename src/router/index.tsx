@@ -28,7 +28,7 @@ export interface RouteType {
   component?: ComponentType;
 }
 
-export const defaultRouter = 'welcome'
+export const defaultRouter = 'welcome';
 
 export const layoutRouter: RouteType[] = [
   {
@@ -41,5 +41,10 @@ export const layoutRouter: RouteType[] = [
     name: '工作流',
     key: 'react-flow',
     componentPath: 'OnePage',
+  },
+  {
+    name: 'Three Fiber',
+    key: 'three',
+    componentPath: 'Three',
   },
 ];

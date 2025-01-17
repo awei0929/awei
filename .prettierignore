@@ -3,3 +3,13 @@ dist
 lib
 public
 out
+.DS_Store
+.idea
+.eslintcache
+.stylelintcache
+.vscode
+.history
+dist
+node_modules
+package-lock.json
+.github

@@ -1,8 +1,8 @@
 import Style from './index.module.less';
-import bizi from '@/assets/long.jpg';
 import { useLayoutEffect, useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
+import Three from './Three';
 
 function HomeLayout() {
   const ref = useRef<HTMLVideoElement | null>(null);
@@ -27,13 +27,8 @@ function HomeLayout() {
     <>
       <div className={Style['home-time']}>{currentTime}</div>
       <div className={Style['home']}>
-        <img
-          className={Style['home-video']}
-          src={bizi}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
+        <Three />
       </div>
-
       <div className={Style['home-link']}>
         <div
           className={Style['home-link-item']}
