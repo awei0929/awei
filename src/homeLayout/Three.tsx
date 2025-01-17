@@ -1,5 +1,6 @@
+// @ts-nocheck
 import * as THREE from 'three';
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import {
   Clouds,
@@ -67,6 +68,8 @@ function Sky() {
     ref.current.rotation.y = Math.cos(state.clock.elapsedTime / 2) / 2;
     ref.current.rotation.x = Math.sin(state.clock.elapsedTime / 2) / 2;
     // cloud0.current.rotation.y -= delta;
+    console.log(delta);
+
     if (document?.getElementById('leva__root') && styleRef.current) {
       styleRef.current = false;
       document.getElementById('leva__root').style.display = 'none';

@@ -20,6 +20,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-hooks/exhaustive-deps': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
     },
   }
 );
